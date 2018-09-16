@@ -40,6 +40,8 @@ myDeckElement.addEventListener('click', function (event) {
 });
 
 newGameButton.addEventListener('click', function () {
+    movesTaken = -1;
+    movesCountAndScore();
     shuffleBoard();
 });
 
@@ -49,12 +51,22 @@ function movesCountAndScore() {
     movesTaken++;
     movesCounter.textContent = movesTaken;
 
+    const my3rdStar = document.getElementById('third_star');
+    const my2ndStar = document.getElementById('second_star');
+
     if (movesTaken === 21) {
-        const myStar = document.getElementById('third_star');
-        myStar.remove();
-    } else if (movesTaken === 35) {
-        const myStar = document.getElementById('second_star');
-        myStar.remove();
+        my3rdStar.classList.add("invisible");
+        console.log(my3rdStar);
+    } else if (movesTaken === 31) {
+        my2ndStar.classList.add("invisible");
+        console.log(my2ndStar);
+    } else if (movesTaken === 0) {
+        if (my3rdStar.classList.contains("invisible")) {
+            my3rdStar.classList.remove("invisible");
+        }
+        if (my2ndStar.classList.contains("invisible")) {
+            my2ndStar.classList.remove("invisible");
+        }
     }
 
 }
