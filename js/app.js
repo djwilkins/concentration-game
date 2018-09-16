@@ -4,7 +4,8 @@
 
 const myDeckElement = document.querySelector('.deck');
 const newGameButton = document.querySelector('.restart');
-let cardsFlipped = 0, cardOne, cardTwo;
+const movesCounter = document.querySelector('.moves');
+let cardsFlipped = 0, cardOne, cardTwo, movesTaken = 0;
 
 shuffleBoard();
 
@@ -21,6 +22,7 @@ myDeckElement.addEventListener('click', function (event) {
         } else {
             event.target.classList.add("open", "show");
             cardsFlipped++;
+            movesCountAndScore();
         }
         
         console.log(cardsFlipped);
@@ -40,6 +42,22 @@ myDeckElement.addEventListener('click', function (event) {
 newGameButton.addEventListener('click', function () {
     shuffleBoard();
 });
+
+
+function movesCountAndScore() {
+
+    movesTaken++;
+    movesCounter.textContent = movesTaken;
+
+    if (movesTaken === 21) {
+        const myStar = document.getElementById('third_star');
+        myStar.remove();
+    } else if (movesTaken === 35) {
+        const myStar = document.getElementById('second_star');
+        myStar.remove();
+    }
+
+}
 
 
 function cardsMatch(card1, card2) {
