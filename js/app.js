@@ -122,7 +122,7 @@ function isGameOver() {
         }
     });
 
-    if (matchCount === 4) {
+    if (matchCount === 16) {
         // Stop game timer
         clearInterval(timerRefresh);
 
@@ -135,7 +135,7 @@ function isGameOver() {
         if (userResponse) {
             newGame();
         }
-        
+
         // console.log("You win! You finished the game in " + gameTime + " and have " + howManyStars + " stars left!");
     }
     
