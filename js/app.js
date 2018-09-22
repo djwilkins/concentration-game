@@ -9,6 +9,14 @@ let cardsFlipped = 0, cardOne, cardTwo, movesTaken = 0;
 
 shuffleBoard();
 
+gameTimer();
+
+
+
+// Create Two Event Listeners for the Game
+// 1 of 2 - Create An Event Listener on the Unordered List with ".deck" Class.
+// This event listener will handle what to do whenever the player clicks a Card on the board.
+
 myDeckElement.addEventListener('click', function (event) {
     if (event.target.nodeName === 'LI') {
         
@@ -39,10 +47,19 @@ myDeckElement.addEventListener('click', function (event) {
     }
 });
 
+// 2 of 2 - Create An Event Listener on the DIV with the ".restart" class.
+// This event listener will handle resetting the Game board when the user clicks the restart icon.
+
+// NOTE: I WILL PROBABLY NEED TO MOVE EVERYTHING IN HERE INTO ITS OWN FUNCTION AND JUST CALL THE FUNCTION HERE
+// THAT WAY THE POST GAME WON RESTART OPTION CAN CALL THE SAME FUNCTION.
+
 newGameButton.addEventListener('click', function () {
     movesTaken = -1;
     movesCountAndScore();
     shuffleBoard();
+    // TIMER FEATURE LINE --> Delete prior startGameTimer with clearInterval(timerVarNameYouUsed);
+    // TIMER FEATURE LINE --> dd startGameTimer function CALL here
+    // Note: Create actual startGameTimer function itself below.
 });
 
 
@@ -161,6 +178,43 @@ function shuffle(array) {
 
     return array;
 }
+
+function gameTimer() {
+
+    // Below is modified approach in w3schools tutorial for countdown timer here: 
+    // https://www.w3schools.com/howto/howto_js_countdown.asp
+
+    const startTime = new Date().getTime();
+    document.getElementById("timer").innerHTML = "0:00";
+
+    console.log(startTime);
+
+    // Set timer refresh to every one second (see "1000" parameter send to setInterval function)
+    const timerRefresh = setInterval(function() {
+
+        // Capture the current time in a variable
+        const currentTime = new Date().getTime();
+
+        // Subtract the start time from current time to get time elapsed since start of game.
+        const timeElapsed = currentTime - startTime;
+
+        // Convert timeElapsed variable into minutes and seconds to output to screen.
+        const minutes = Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((timeElapsed % (1000 * 60)) / 1000);
+
+        // Add leading zero to seconds variable where value < 10 seconds.
+        if (seconds < 10) {
+            numToString = seconds.toString();
+            console.log(numToString);
+            seconds = "0" + numToString;
+        }
+
+        // Display output on board in elment with id="timer"
+        document.getElementById("timer").innerHTML = minutes + ":" + seconds;
+
+    }, 1000);
+}
+
 
 
 /*

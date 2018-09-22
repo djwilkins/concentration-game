@@ -111,3 +111,9 @@ h1 {
 .invisible {
     visibility: hidden;
 }
+
+#timer {
+    font-size: 30px;
+    padding-top: 0px;
+    margin-top: 0px;
+}
