@@ -1,12 +1,11 @@
-/*
- * Create a list that holds all of your cards
- */
-
 const myDeckElement = document.querySelector('.deck');
 const newGameButton = document.querySelector('.restart');
 const movesCounter = document.querySelector('.moves');
+const my3rdStar = document.getElementById('third_star');
+const my2ndStar = document.getElementById('second_star');
 let cardsFlipped = 0, cardOne, cardTwo, movesTaken = 0;
-let timerRefresh;
+let gameTime, timerRefresh;
+
 
 shuffleBoard();
 gameTimer();
@@ -53,21 +52,23 @@ myDeckElement.addEventListener('click', function (event) {
 // THAT WAY THE POST GAME WON RESTART OPTION CAN CALL THE SAME FUNCTION.
 
 newGameButton.addEventListener('click', function () {
+    newGame();
+});
+
+function newGame() {
     movesTaken = -1;
     movesCountAndScore();
     shuffleBoard();
     clearInterval(timerRefresh);
     gameTimer();
-});
-
+}
 
 function movesCountAndScore() {
 
     movesTaken++;
     movesCounter.textContent = movesTaken;
 
-    const my3rdStar = document.getElementById('third_star');
-    const my2ndStar = document.getElementById('second_star');
+    // my2ndStar and my3rdStar declared at top of script.
 
     if (movesTaken === 21) {
         my3rdStar.classList.add("invisible");
@@ -121,11 +122,34 @@ function isGameOver() {
         }
     });
 
-    if (matchCount === 16) {
-        window.alert("You won!");
-        // Add other content for here
+    if (matchCount === 4) {
+        // Stop game timer
+        clearInterval(timerRefresh);
+
+        // Pull number of stars player has left
+        const howManyStars = numberOfStarsLeft();
+
+        // Let user know they won with stats and ask if want to play again
+        let userResponse = window.confirm("You won! It took you " + gameTime + " and with " + howManyStars + " stars efficiency. Want to play again?");
+
+        if (userResponse) {
+            newGame();
+        }
+        
+        // console.log("You win! You finished the game in " + gameTime + " and have " + howManyStars + " stars left!");
     }
     
+}
+
+function numberOfStarsLeft (){
+    // How many stars does player have left?
+    if (my2ndStar.classList.contains("invisible")) {
+        return 1;
+    } else if (my3rdStar.classList.contains("invisible")) {
+        return 2;
+    } else {
+        return 3;
+    }
 }
 
 
@@ -210,7 +234,8 @@ function gameTimer() {
         }
 
         // Display output on board in elment with id="timer"
-        document.getElementById("timer").innerHTML = minutes + ":" + seconds;
+        gameTime = minutes + ":" + seconds;
+        document.getElementById("timer").innerHTML = gameTime;
 
     }, 1000);
 }
