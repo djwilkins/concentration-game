@@ -6,11 +6,10 @@ const myDeckElement = document.querySelector('.deck');
 const newGameButton = document.querySelector('.restart');
 const movesCounter = document.querySelector('.moves');
 let cardsFlipped = 0, cardOne, cardTwo, movesTaken = 0;
+let timerRefresh;
 
 shuffleBoard();
-
 gameTimer();
-
 
 
 // Create Two Event Listeners for the Game
@@ -57,9 +56,8 @@ newGameButton.addEventListener('click', function () {
     movesTaken = -1;
     movesCountAndScore();
     shuffleBoard();
-    // TIMER FEATURE LINE --> Delete prior startGameTimer with clearInterval(timerVarNameYouUsed);
-    // TIMER FEATURE LINE --> dd startGameTimer function CALL here
-    // Note: Create actual startGameTimer function itself below.
+    clearInterval(timerRefresh);
+    gameTimer();
 });
 
 
@@ -187,16 +185,18 @@ function gameTimer() {
     const startTime = new Date().getTime();
     document.getElementById("timer").innerHTML = "0:00";
 
-    console.log(startTime);
+    // console.log(startTime);
 
     // Set timer refresh to every one second (see "1000" parameter send to setInterval function)
-    const timerRefresh = setInterval(function() {
+    timerRefresh = setInterval(function() {
 
         // Capture the current time in a variable
         const currentTime = new Date().getTime();
 
         // Subtract the start time from current time to get time elapsed since start of game.
         const timeElapsed = currentTime - startTime;
+
+        console.log(timeElapsed);
 
         // Convert timeElapsed variable into minutes and seconds to output to screen.
         const minutes = Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60));
@@ -205,7 +205,7 @@ function gameTimer() {
         // Add leading zero to seconds variable where value < 10 seconds.
         if (seconds < 10) {
             numToString = seconds.toString();
-            console.log(numToString);
+            // console.log(numToString);
             seconds = "0" + numToString;
         }
 
@@ -214,6 +214,8 @@ function gameTimer() {
 
     }, 1000);
 }
+
+
 
 
 
