@@ -26,7 +26,6 @@ body {
 }
 
 .container {
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,8 +42,6 @@ h1 {
  */
 
 .deck {
-    /* width: 660px;
-    min-height: 680px; */
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
     border-radius: 10px;
@@ -54,7 +51,7 @@ h1 {
     justify-content: space-between;
     align-items: center;
     margin: 0 0 3em;
-    min-height: 680px;  
+    min-height: 680px;
 }
 
 .deck .card {
@@ -172,7 +169,6 @@ h1 {
 
  .modal-stats {
     margin-top: 60px;
-
  }
 
 .modal-hr {

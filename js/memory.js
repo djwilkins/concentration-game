@@ -20,7 +20,7 @@ gameTimer();
 
 myDeckElement.addEventListener('click', function (event) {
     if (event.target.nodeName === 'LI') {
-        
+
         // Capture state of selected card in variables.
         const isOpen = event.target.classList.contains('open');
         const isMatched = event.target.classList.contains('match');
@@ -33,7 +33,7 @@ myDeckElement.addEventListener('click', function (event) {
             cardsFlipped++;
             movesCountAndScore();
         }
-        
+
         console.log(cardsFlipped);
 
         if (cardsFlipped === 1) {
@@ -44,7 +44,6 @@ myDeckElement.addEventListener('click', function (event) {
             // If two cards flipped over, check if a match and then see if all matches found.
                 cardsMatch(cardOne, cardTwo);
         }
-
     }
 });
 
@@ -78,7 +77,7 @@ endGameScreen.addEventListener('click', function (){
 
 // ALL FUNCTIONS CALLED FROM ABOVE OR BELOW.
 
-
+// The newGame function resets the game board in every regard and is called from multiple places/
 function newGame() {
     movesTaken = -1;
     movesCountAndScore();
@@ -87,6 +86,8 @@ function newGame() {
     gameTimer();
 }
 
+// The movesCountsAndScore function runs each time the user turns over a card.
+// It keeps track of how many cards the user has turned over in the game and adjusts the start rating.
 function movesCountAndScore() {
 
     movesTaken++;
@@ -111,10 +112,10 @@ function movesCountAndScore() {
             my2ndStar.classList.remove("invisible");
         }
     }
-
 }
 
-
+// The cardsMatch function checks to see whether the two cards most recently turned over by the user match.
+// If they match, it responds accordingly with a pop-up message to the user and edits the flipped cards status.
 function cardsMatch(card1, card2) {
     const cardOneFace = card1.querySelector('i').classList.value;
     const cardTwoFace = card2.querySelector('i').classList.value;
@@ -124,7 +125,6 @@ function cardsMatch(card1, card2) {
         // If cards match, update classes to match
         if (cardOneFace === cardTwoFace) {
             window.alert("Match!");
-    
             card1.classList.add("match");
             card2.classList.add("match");
         } else {
@@ -137,15 +137,16 @@ function cardsMatch(card1, card2) {
         // Check to see if all matches found and game over.
         isGameOver();
     }, 100);
-
 }
 
+// The isGameOver function checks to see if player has matched all cards on board yet.
+// If so, it displays and populates a Game Stat module screen for the user.
 function isGameOver() {
     const myCards = document.querySelectorAll('.card');
     let matchCount = 0;
     myCards.forEach(function(card) {
         if (card.classList.contains('match')) {
-            matchCount++;    
+            matchCount++;
         }
     });
 
@@ -176,11 +177,13 @@ function isGameOver() {
         getStarsUL.innerHTML = "";
         getStarsUL.appendChild(myStarDocFrag);
 
-    }
-    
+    }    
 }
-
- function shuffleBoard() {
+// The shuffleBoard function pulls all the card face classes from the existing cards into an array.
+// That arrays values are then shuffled through the provided shuffle function (below).
+// The results are then looped through to create the new html elements.
+// Once fully preppred, the new html code is appended to the ".deck" parent tag after its contents are cleared.
+function shuffleBoard() {
     let getCardFaces = [];
     let stageCardFaces = [];
     let getDeck = document.querySelector('.deck');
@@ -224,13 +227,13 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
 
+// The gameTimer 
 function gameTimer() {
 
-    // Below is modified approach in w3schools tutorial for countdown timer here: 
+    // Below is modified approach in w3schools tutorial for countdown timer here:
     // https://www.w3schools.com/howto/howto_js_countdown.asp
 
     const startTime = new Date().getTime();

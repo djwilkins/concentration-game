@@ -4,7 +4,7 @@
     .deck {
         width: 85%;
         min-height: 680px;
-        padding: 20px;  
+        padding: 20px;
     }
     .deck .card {
         height: 70px;
@@ -23,7 +23,6 @@
     }
     .modal {
         top: 450px;
-
     }
     .modal-stats {
         margin-top: 15px;
@@ -74,7 +73,7 @@
         height: 125px;
         width: 125px;
     }
-    .score-panel 
+    .score-panel
     .restart,
     .recycle {
         /* display: inline-block; */
