@@ -1,6 +1,6 @@
 /* BEGIN MEDIA QUERY BREAK POINTS */
 
-@media screen and (min-width: 300px) and (max-width: 676px) {
+@media screen and (min-width: 300px) and (max-width: 449px) {
     .deck {
         width: 85%;
         min-height: 680px;
@@ -12,12 +12,14 @@
     }
     .score-panel {
         text-align: center;
-        width: 345px;
+        width: 100%;
         margin-bottom: 10px;
+        display: inline-block;
     }
     .restart {
         display: inline-block;
         margin-left: 25px;
+        float: none;
     }
     .modal {
         top: 450px;
@@ -40,20 +42,45 @@
     }
 }
 
-@media screen and (min-width: 677px) {
-    .score-panel .restart {
-        float: right;
+@media screen and (min-width: 450px) and (max-width: 542px) {
+    .score-panel .restart .moves {
         cursor: pointer;
+        display: inline-block;
+        margin-left: 5px;
+        float: none;
+    }
+    .deck {
+        width: 100%;
+        height: 1000px;
+    }
+    .card {
+        height: 125px;
+        width: 125px;
+    }
+    .score-panel {
+        text-align: center;
+        width: 100%;
+        margin-bottom: 10px;
     }
 }
 
-@media screen and (min-width: 800px) {
+
+
+@media screen and (min-width: 677px) {
     .deck {
         width: 660px;
-        min-height: 680px;  
     }
     .deck .card {
         height: 125px;
         width: 125px;
+    }
+    .score-panel 
+    .restart,
+    .recycle {
+        /* display: inline-block; */
+        cursor: pointer;
+    }
+    .restart {
+        float: right;
     }
 }
