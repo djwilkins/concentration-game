@@ -149,7 +149,7 @@ function isGameOver() {
         }
     });
 
-    if (matchCount === 2) {
+    if (matchCount === 16) {
         // Stop game timer
         clearInterval(timerRefresh);
 
