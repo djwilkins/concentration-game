@@ -71,6 +71,7 @@ endGameScreen.addEventListener('click', function (){
         }
         // close out modal after either button pushed.
         endGameScreen.classList.add("invisible");
+        document.body.classList.remove("no-scroll");
     }
 });
 
@@ -148,11 +149,12 @@ function isGameOver() {
         }
     });
 
-    if (matchCount === 16) {
+    if (matchCount === 2) {
         // Stop game timer
         clearInterval(timerRefresh);
 
         endGameScreen.classList.remove("invisible");
+        document.body.classList.add("no-scroll");
 
         document.getElementById("stat-time").innerHTML = gameTime;
 

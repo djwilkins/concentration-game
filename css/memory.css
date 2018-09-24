@@ -16,6 +16,10 @@ body {
     padding: 0;
 }
 
+.no-scroll {
+    overflow: hidden;
+}
+
 body {
     background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
@@ -39,8 +43,8 @@ h1 {
  */
 
 .deck {
-    width: 660px;
-    min-height: 680px;
+    /* width: 660px;
+    min-height: 680px; */
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
     border-radius: 10px;
@@ -99,13 +103,13 @@ h1 {
     margin: 0 5px 0 0;
 }
 
+#reset,
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
 }
 
 .score-panel .restart {
-    float: right;
     cursor: pointer;
 }
 

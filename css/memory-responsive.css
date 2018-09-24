@@ -1,17 +1,59 @@
 /* BEGIN MEDIA QUERY BREAK POINTS */
 
-@media screen and (max-width: 424px) {
+@media screen and (min-width: 300px) and (max-width: 676px) {
+    .deck {
+        width: 85%;
+        min-height: 680px;
+        padding: 20px;  
+    }
+    .deck .card {
+        height: 70px;
+        width: 70px;
+    }
+    .score-panel {
+        text-align: center;
+        width: 345px;
+        margin-bottom: 10px;
+    }
+    .restart {
+        display: inline-block;
+        margin-left: 25px;
+    }
+    .modal {
+        top: 450px;
 
+    }
+    .modal-stats {
+        margin-top: 15px;
+    }
+    .modal-stats,
+    .modal-question,
+    .modal-stars {
+        font-size: 18px;
+    }
+    .modal-hr {
+        margin-top: 34px;
+    }
+    .congrats,
+    .you-won {
+        display: inline-block;
+    }
 }
 
-@media screen and (min-width: 425px) and (max-width: 774px) {
-    
-}
-
-@media screen and (min-width: 775px) {
-
+@media screen and (min-width: 677px) {
+    .score-panel .restart {
+        float: right;
+        cursor: pointer;
+    }
 }
 
 @media screen and (min-width: 800px) {
-
+    .deck {
+        width: 660px;
+        min-height: 680px;  
+    }
+    .deck .card {
+        height: 125px;
+        width: 125px;
+    }
 }
