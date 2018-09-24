@@ -22,6 +22,7 @@ body {
 }
 
 .container {
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -116,4 +117,90 @@ h1 {
     font-size: 30px;
     padding-top: 0px;
     margin-top: 0px;
+}
+
+/*
+ * Styles for the Game Stats Modal
+ */
+
+.modal-close {
+    position: fixed;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 65px;
+    color: white;
+    margin-right: 25px;
+}
+
+.modal-close:hover {
+    color: black;
+}
+
+.modal-close:active {
+    color: orange;
+}
+
+ .modal {
+    position: fixed;
+    top: 465px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    border-radius: 10px;
+    width: 700px;
+    /* height: 61%; */
+    height: 900px;
+    margin-top: 25%:
+    font-size: 28px;
+ }
+
+
+ .modal-stats,
+ .modal-question,
+ .modal-stars {
+    color: #ffffff;
+    font-size: 28px;
+    text-align: center;
+ }
+
+ .modal-stats {
+    margin-top: 60px;
+
+ }
+
+.modal-hr {
+    margin-top: 70px;
+}
+
+ .modal-button {
+    background: #2e3d49;
+    padding: 15px 32px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    font-size: 28px;
+    color: #aa7ecd;
+    width: 100%;
+    margin-top: 5px;
+    cursor: pointer;
+ }
+
+ .modal-button:hover {
+     color: white;
+ }
+
+ .modal-button:active {
+    color: orange;
+}
+
+.you-won,
+.stats {
+    font-style: italic;
+}
+
+.modal-stars {
+    list-style: none;
+    padding-left: 0;
 }

@@ -1,18 +1,19 @@
 const myDeckElement = document.querySelector('.deck');
 const newGameButton = document.querySelector('.restart');
+const endGameScreen = document.querySelector('.modal')
 const movesCounter = document.querySelector('.moves');
 const my3rdStar = document.getElementById('third_star');
 const my2ndStar = document.getElementById('second_star');
 let cardsFlipped = 0, cardOne, cardTwo, movesTaken = 0;
 let gameTime, timerRefresh;
-
+let howManyStars = 3;
 
 shuffleBoard();
 gameTimer();
 
 
-// Create Two Event Listeners for the Game
-// 1 of 2 - Create An Event Listener on the Unordered List with ".deck" Class.
+// Create Three Event Listeners for the Game
+// 1 of 3 - Create An Event Listener on the Unordered List with ".deck" Class.
 // This event listener will handle what to do whenever the player clicks a Card on the board.
 
 myDeckElement.addEventListener('click', function (event) {
@@ -45,7 +46,7 @@ myDeckElement.addEventListener('click', function (event) {
     }
 });
 
-// 2 of 2 - Create An Event Listener on the DIV with the ".restart" class.
+// 2 of 3 - Create An Event Listener on the DIV with the ".restart" class.
 // This event listener will handle resetting the Game board when the user clicks the restart icon.
 
 // NOTE: I WILL PROBABLY NEED TO MOVE EVERYTHING IN HERE INTO ITS OWN FUNCTION AND JUST CALL THE FUNCTION HERE
@@ -54,6 +55,26 @@ myDeckElement.addEventListener('click', function (event) {
 newGameButton.addEventListener('click', function () {
     newGame();
 });
+
+
+// 3 of 3 - Create An Event Listener on the div with Modal / Game End Screen "Play again" question.
+
+endGameScreen.addEventListener('click', function (){
+    // If button clicked on end screen model
+    // Reset the game board if player clicks to play again.
+    if (event.target.nodeName === 'BUTTON') {
+        // console.log(event.target.id);
+        if (event.target.id === 'play-again') {
+            newGame();
+        }
+        // close out modal after either button pushed.
+        endGameScreen.classList.add("invisible");
+    }
+});
+
+
+// ALL FUNCTIONS CALLED FROM ABOVE OR BELOW.
+
 
 function newGame() {
     movesTaken = -1;
@@ -73,12 +94,15 @@ function movesCountAndScore() {
     if (movesTaken === 21) {
         my3rdStar.classList.add("invisible");
         console.log(my3rdStar);
+        howManyStars = 2;
     } else if (movesTaken === 31) {
         my2ndStar.classList.add("invisible");
         console.log(my2ndStar);
+        howManyStars = 1;
     } else if (movesTaken === 0) {
         if (my3rdStar.classList.contains("invisible")) {
             my3rdStar.classList.remove("invisible");
+            howManyStars = 3;
         }
         if (my2ndStar.classList.contains("invisible")) {
             my2ndStar.classList.remove("invisible");
@@ -126,32 +150,31 @@ function isGameOver() {
         // Stop game timer
         clearInterval(timerRefresh);
 
-        // Pull number of stars player has left
-        const howManyStars = numberOfStarsLeft();
+        endGameScreen.classList.remove("invisible");
 
-        // Let user know they won with stats and ask if want to play again
-        let userResponse = window.confirm("You won! It took you " + gameTime + " and with " + howManyStars + " stars efficiency. Want to play again?");
+        document.getElementById("stat-time").innerHTML = gameTime;
 
-        if (userResponse) {
-            newGame();
+        // use howManyStars value to loop and create as many stars li as need to visually have number of stars in stat output
+
+        // Create document fragment to stage stars to add to user output / modal screen
+        const myStarDocFrag = document.createDocumentFragment();
+
+        // Create new list item with star class (for star symbol styling) for each star player has left
+        for (i = 1; i <= howManyStars; i++) {
+            const newStarsLI = document.createElement('li');
+            newStarsLI.classList.add('fa');
+            newStarsLI.classList.add('fa-star');
+            myStarDocFrag.appendChild(newStarsLI);
         }
 
-        // console.log("You win! You finished the game in " + gameTime + " and have " + howManyStars + " stars left!");
+        // Add number of stars player has left to modal game stat screen
+        let getStarsUL = document.querySelector('.modal-stars');
+        getStarsUL.innerHTML = "";
+        getStarsUL.appendChild(myStarDocFrag);
+
     }
     
 }
-
-function numberOfStarsLeft (){
-    // How many stars does player have left?
-    if (my2ndStar.classList.contains("invisible")) {
-        return 1;
-    } else if (my3rdStar.classList.contains("invisible")) {
-        return 2;
-    } else {
-        return 3;
-    }
-}
-
 
  function shuffleBoard() {
     let getCardFaces = [];
