@@ -1,20 +1,12 @@
-# Memory Game Project
-
-## Table of Contents
-
-* [Instructions](#instructions)
-* [Contributing](#contributing)
-
-## Instructions
-
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+# Memory Game ("Concentration")
+#### BACKGROUND
+* This is my version of "the Memory Game" project for the Udacity Front-End Web Developer Nanodegree.
+* While the basic look and feel of the app components were provided, I took the initial static "deck of cards" webpage and turned it into a fully functioning game with the power of vanilla JavaScript.
+#### INSTALLATION
+To run the application locally, simply do the following:
+1. Download the project files into a folder anywhere on your machine.
+2. Open the memory.html file in that folder in a modern web browser (like Chrome or Firefox).
+3. Play the game!
+#### DEMO
+For a quicker way to try it out, you can run it from my website here:
+http://djwilkins.net/memory.html
