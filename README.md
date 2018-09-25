@@ -1,7 +1,7 @@
 # Memory Game ("Concentration")
 #### BACKGROUND
-* This is my version of "the Memory Game" project for the Udacity Front-End Web Developer Nanodegree.
-* While the basic look and feel of the app components were provided, I took the initial static "deck of cards" webpage and turned it into a fully functioning game with the power of vanilla JavaScript.
+* This is my version of "the Memory Game" project from Udacity's Front-End Web Developer Nanodegree.
+* While the basic look and feel of the app components were provided to students, I took the initial static "deck of cards" webpage and turned it into the fully functioning game found here using vanilla JavaScript.
 #### INSTALLATION
 To run the application locally, simply do the following:
 1. Download the project files into a folder anywhere on your machine.
