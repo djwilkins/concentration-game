@@ -8,5 +8,4 @@ To run the application locally, simply do the following:
 2. Open the memory.html file in that folder in a modern web browser (like Chrome or Firefox).
 3. Play the game!
 #### DEMO
-For a quicker way to try it out, you can run it from my website here:
 http://djwilkins.net/memory.html
